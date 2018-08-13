@@ -21,4 +21,11 @@ class Coin
     public $change1h;
     public $change24h;
     public $change7d;
+
+    public function priceConverter ($decimals, $number)
+    {
+        $money = number_format($number, $decimals, ',', '.');
+
+        return $money;
+    }
 }
