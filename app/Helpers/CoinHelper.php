@@ -21,36 +21,30 @@ class CoinHelper
 
     function requestToCoin ()
     {
-        try {
-            // Eventuell auf ASync umstellen?
-            $client = new Client();
-            $request = $client->request('GET', $this->API_URL . $this->endpoint);
+        // Eventuell auf ASync umstellen?
+        $client = new Client();
+        $request = $client->request('GET', $this->API_URL . $this->endpoint);
 
 
-            $items = json_decode($request->getBody());
+        $items = json_decode($request->getBody());
 
 
-            foreach($items->data AS $coin)
-            {
-                $tmpCoin = new Coin();
+        foreach($items->data AS $coin)
+        {
+            $tmpCoin = new Coin();
 
-                $tmpCoin->id = $coin->id;
-                $tmpCoin->name = $coin->name;
-                $tmpCoin->symbol = $coin->symbol;
-                $tmpCoin->rank = $coin->rank;
-                $tmpCoin->price = $coin->quotes->USD->price;
-                $tmpCoin->vol24h = $coin->quotes->USD->volume_24h;
-                $tmpCoin->marketcap = $coin->quotes->USD->market_cap;
-                $tmpCoin->change1h = $coin->quotes->USD->percent_change_1h;
-                $tmpCoin->change24h = $coin->quotes->USD->percent_change_24h;
-                $tmpCoin->change7d = $coin->quotes->USD->percent_change_7d;
+            $tmpCoin->id = $coin->id;
+            $tmpCoin->name = $coin->name;
+            $tmpCoin->symbol = $coin->symbol;
+            $tmpCoin->rank = $coin->rank;
+            $tmpCoin->price = $coin->quotes->USD->price;
+            $tmpCoin->vol24h = $coin->quotes->USD->volume_24h;
+            $tmpCoin->marketcap = $coin->quotes->USD->market_cap;
+            $tmpCoin->change1h = $coin->quotes->USD->percent_change_1h;
+            $tmpCoin->change24h = $coin->quotes->USD->percent_change_24h;
+            $tmpCoin->change7d = $coin->quotes->USD->percent_change_7d;
 
-                $this->coinArray[] = $tmpCoin;
-            }
-
-        }
-        catch (\Exception $e) {
-            dd($e->getMessage());
+            $this->coinArray[] = $tmpCoin;
         }
     }
 
