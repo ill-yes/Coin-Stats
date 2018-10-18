@@ -13,8 +13,8 @@ use GuzzleHttp\Client;
 class CoinHelper
 {
 
-    private $API_URL = 'https://api.coinmarketcap.com/v2/';
-    private $endpoint = "ticker/?limit=50";
+    private static $api_url = 'https://api.coinmarketcap.com/v2/';
+    private static $endpoint = "ticker/?limit=50";
 
     private $coinArray = array();
 
@@ -23,7 +23,7 @@ class CoinHelper
     {
         // Eventuell auf ASync umstellen?
         $client = new Client();
-        $request = $client->request('GET', $this->API_URL . $this->endpoint);
+        $request = $client->request('GET', self::$api_url . self::$endpoint);
 
 
         $items = json_decode($request->getBody());
