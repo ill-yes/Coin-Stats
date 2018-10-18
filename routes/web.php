@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
-Route::get('/coins', 'PagesController@coins');
-Route::get('/kontakt', 'PagesController@contact');
+Route::get('/startseite', 'PagesController@index');
+Route::get('/waehrungen', 'PagesController@coins');
+Route::get('/kontakte', 'PagesController@contact');
