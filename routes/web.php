@@ -13,4 +13,4 @@
 
 Route::get('/', 'PagesController@index');
 Route::get('/coins', 'PagesController@coins');
-Route::get('/kontakt', 'PagesController@contact');
+Route::get('/contact', 'PagesController@contact');
