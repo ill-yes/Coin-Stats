@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Helpers\CoinHelper;
 
 class PagesController extends Controller
 {
     public function index()
     {
-
         return view('pages.index');
     }
 
@@ -19,8 +17,9 @@ class PagesController extends Controller
 
         $coinList = $coinReq->coinToList();
 
-
-        return view('pages.coins', ['coinList' => $coinList]);
+        return view('pages.coins', [
+            'coinList' => $coinList
+        ]);
     }
 
     public function contact()
@@ -28,4 +27,3 @@ class PagesController extends Controller
         return view('pages.contact');
     }
 }
-
