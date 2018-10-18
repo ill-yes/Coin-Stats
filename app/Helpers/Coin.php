@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ilyestascou
- * Date: 08.08.18
- * Time: 09:11
- */
 
 namespace App\Helpers;
-
 
 class Coin
 {
@@ -22,10 +15,16 @@ class Coin
     public $change24h;
     public $change7d;
 
-    public function priceConverter ($decimals, $number)
+    public function priceConverter($decimals, $number, $usePoints = true)
     {
-        $money = number_format($number, $decimals, ',', '.');
+        if ($usePoints) {
+            $money = number_format($number, $decimals, ',', '.');   
+        } else {
+            $money = number_format($number, $decimals, '.', ',');   
+        }
 
         return $money;
     }
+    
+    
 }
