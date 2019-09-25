@@ -14,7 +14,6 @@ class PagesController extends Controller
     public function coins()
     {
         $coinReq = new CoinHelper();
-
         $coinList = $coinReq->coinToList();
 
         return view('pages.coins', [
