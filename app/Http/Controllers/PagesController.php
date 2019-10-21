@@ -13,7 +13,7 @@ class PagesController extends Controller
 
     public function coins()
     {
-        $coinReq = new CoinHelper();
+        $coinReq = app(CoinHelper());
 
         $coinList = $coinReq->coinToList();
 
