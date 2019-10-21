@@ -16,11 +16,12 @@ class CoinHelper
     private static $api_url = 'https://api.coinmarketcap.com/v2/';
     private static $endpoint = "ticker/?limit=50";
 
-    private $coinArray = array();
+    private $coinArray = null;
 
 
     function requestToCoin ()
     {
+        $this->coinArray = [];
         // Eventuell auf ASync umstellen?
         $client = new Client();
         $request = $client->request('GET', self::$api_url . self::$endpoint);
@@ -50,7 +51,9 @@ class CoinHelper
 
     function coinToList ()
     {
-        $this->requestToCoin();
+        if(is_null($this->coinToList())){
+            $this->requestToCoin();
+        }
 
         return $this->coinArray;
     }
