@@ -15,7 +15,7 @@ class Coin
     public $change24h;
     public $change7d;
 
-    public function priceConverter($decimals, $number, $usePoints = true)
+    public function priceConverter($decimals, $number, $usePoints = false)
     {
         if ($usePoints) {
             $money = number_format($number, $decimals, ',', '.');   
@@ -24,7 +24,5 @@ class Coin
         }
 
         return $money;
-    }
-    
-    
+    }    
 }
